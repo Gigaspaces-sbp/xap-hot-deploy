@@ -19,29 +19,4 @@
         <module>common</module>
         <module>v2</module>
     </modules>
-    <dependencies>
-        <dependency>
-            <artifactId>gs-runtime</artifactId>
-            <groupId>com.gigaspaces</groupId>
-            <version>${gigaspacesVersion}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <artifactId>gs-openspaces</artifactId>
-            <groupId>com.gigaspaces</groupId>
-            <version>${gigaspacesVersion}</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jacorb</artifactId>
-                    <groupId>jacorb</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>ant</artifactId>
-                    <groupId>ant</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-    </dependencies>
-
 </project>

@@ -16,7 +16,6 @@
 
 
     <dependencies>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -49,35 +48,23 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.0</version>
         </dependency>
-
-        <dependency>
-            <artifactId>gs-runtime</artifactId>
-            <groupId>com.gigaspaces</groupId>
+       <dependency>
+            <groupId>org.gigaspaces</groupId>
+            <artifactId>xap-openspaces</artifactId>
             <version>${gigaspacesVersion}</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
-        <dependency>
-            <artifactId>gs-openspaces</artifactId>
-            <groupId>com.gigaspaces</groupId>
-            <version>${gigaspacesVersion}</version>
-            <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jacorb</artifactId>
-                    <groupId>jacorb</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>ant</artifactId>
-                    <groupId>ant</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+		<dependency>
+			<groupId>com.gigaspaces</groupId>
+			<artifactId>xap-admin</artifactId>
+			<version>${gigaspacesVersion}</version>
+			<scope>provided</scope>
+		</dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
             <version>0.1.51</version>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
