@@ -9,8 +9,8 @@
     <artifactId>xap-hot-redeploy</artifactId>
 
     <modelVersion>4.0.0</modelVersion>
-	<repositories>
-		<repository>
+    <repositories>
+        <repository>
             <id>org.openspaces</id>
             <url>http://maven-repository.openspaces.org</url>
         </repository>
@@ -24,7 +24,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.javadoc.skip>true</maven.javadoc.skip>
-		<gigaspacesVersion>14.0.0</gigaspacesVersion>
+        <gigaspacesVersion>14.0.0</gigaspacesVersion>
         <skipTests>true</skipTests>
     </properties>
     <modules>
@@ -37,7 +37,7 @@
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>org.gigaspaces</groupId>
             <artifactId>xap-openspaces</artifactId>
             <version>${gigaspacesVersion}</version>
@@ -57,6 +57,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-    </project>
+</project>
