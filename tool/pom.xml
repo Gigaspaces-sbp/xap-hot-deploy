@@ -14,7 +14,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
@@ -39,8 +38,14 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.19.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.0.5.RELEASE</version>
+            <version>4.3.19.RELEASE</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -54,12 +59,12 @@
             <version>${gigaspacesVersion}</version>
             <scope>provided</scope>
         </dependency>
-		<dependency>
-			<groupId>com.gigaspaces</groupId>
-			<artifactId>xap-admin</artifactId>
-			<version>${gigaspacesVersion}</version>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>com.gigaspaces</groupId>
+            <artifactId>xap-admin</artifactId>
+            <version>${gigaspacesVersion}</version>
+            <scope>provided</scope>
+    	</dependency>
         <dependency>
             <groupId>com.jcraft</groupId>
             <artifactId>jsch</artifactId>
@@ -102,7 +107,5 @@
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>

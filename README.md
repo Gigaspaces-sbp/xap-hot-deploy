@@ -1,23 +1,26 @@
 XAP hot deploy
 ===
 
+|Author(s)|Version|Last Updated|
+|---|---|---|
+|Anna Babich, Pavlo Romanenko| 14.0.0|January 2019|
+
 About
 ---
-This tool allows to refresh business logic without any system downtime and data loss (hot deploy).
-See [gigaspaces wiki] for details.
+This tool enables refresh of business logic without any system downtime and data loss (hot deploy).
+See [Gigaspaces Documentation](https://docs.gigaspaces.com/sbp/xap-hot-deploy.html) for details.
 
-Tool will restart all processing units defined by user.
+This tool will restart all processing units defined by user.
 
-Old deployment files for specified pu will be moved to the temp folder. 
-New files will be copied to the gigaspaces xap deploy folder. 
-After that application will discover all processing units and restart them.
-The tool supports elastic pu.
+Old deployment files for a specified PU will be moved to the temp folder. 
+New files will be copied to the gigaspaces xap deploy folder.
+After that, the application will discover all processing units and restart them.
 
 Stateful PU restart.
 ---
-1. Tool discover all processing unit instances and identifies their space mode.
+1. Tool discovers all processing unit instances and identifies their space mode.
 2. All backups restarted (each instance in separate thread).
-3. All primaries restarted. If 'double_restart' option enabled, primaries restarted twice to return to the original state (one by one).
+3. All primaries restarted. If 'double_restart' option is enabled, primaries restarted twice to return to the original state (one by one).
 In the other case primaries restarted on time (each instance in separate thread).
 Use 'double_restart' if it is important what the instance on which machine should be located.
 
@@ -40,7 +43,7 @@ Note, that tests will be skipped in this case. How to build with tests see in Te
 Run
 ---
 
-1. Copy new jar(war) files with new classes to the `xap-hot-redeploy` folder.
+1. Copy new artifact files, i.e. jar(war) files with new classes, to the `xap-hot-redeploy` folder.
 2. Configure options in `xap-hot-redeploy/config.properties` file.
 3. Run `run.sh (run.bat)` script from xap-hot-redeploy folder.
 
@@ -58,7 +61,7 @@ Parameters in `config.properties` file.
 | IDENT_PU_TIMEOUT         | required          | 60                                | Timeout to identify processing unit (in seconds).                                                                                   |
 | IDENT_SPACE_MODE_TIMEOUT | required          | 60                                 | Timeout to identify space mode (in seconds).                                                                                        |
 | IDENT_INSTANCES_TIMEOUT | required          | 60                                 | Timeout to identify instances (in seconds).                                                                                        |
-| RESTART_TIMEOUT | required          | 60                                 | Timeout for restarting pu (in seconds).                                                                                        |
+| RESTART_TIMEOUT | required          | 60                                 | Timeout for restarting PU (in seconds).                                                                                        |
 | IS_SECURED               | optional          | false                              | Set this parameter "true" if space is secured.                                                                                      |
 | DOUBLE_RESTART           | optional          | false                              | Set "true" if all instances should be placed in "original" vm after redeploy. When set to "true" primary instances restarted twice. |
 | LOCAL_CLUSTER           | optional          | false                              | Set "true" for local cluster mode (testing mode). |
@@ -66,7 +69,7 @@ Parameters in `config.properties` file.
 
 Results
 ---
-In case if there are no problems with hot-redeploy application you can see success message and details about restarting pu instances: 
+If there are no problems with the hot-redeploy application you can see success messages and details about restarting PU instances: 
 ```sh
 14:51:44,392  INFO main ConfigInitializer:init:28 - Gigaspaces location: /home/user/gigaspaces-xap-premium-10.0.0-ga
 14:51:44,393  INFO main ConfigInitializer:init:29 - Pu to restart: [space, cinema, mirror]
@@ -114,16 +117,16 @@ mvn clean install -DskipTests=false
  * run gs-agent.sh/bat
  * lookup group and locator should be set to default values
  * properties should be set in `/tool/src/test/resources/config.properties` file
- * make sure that there is no pu with name "space" deployed already
+ * make sure that there is no PU with name "space" deployed already
  
 Rollback
 ---
 
-Rollback functionality helps to avoid loosing data, if errors occurred during the redeploy (for example - broken pu file).
-When some errors occurred tool search for backup GSM. If there are more than one GSM in system, they will be restarted one by one. If there is only one GSM in system, tool look for empty GSC and restart it. 
-In this cases rollback finished successfully and all pus for redeploy return to them original version.
+Rollback functionality helps to avoid losing data, if errors occurred during the redeploy (for example - broken PU file).
+When some errors occur, the tool searches for a backup GSM. If there are more than one GSM in system, they will be restarted one by one. If there is only one GSM in the system, the tool look will look for an empty GSC and restart it. 
+In this case rollback finished successfully and all PUs for redeploy return to them original version.
 
-If backup GSM and empty container not found rollback failed and system state is unstable.
+If a backup GSM and an empty container are not found, rollback failed and the system state is unstable.
 
 Rollback working example:
 
@@ -144,7 +147,6 @@ Rollback working example:
 
 or
 
-* If n = count of primary pu instances, you should have n + 1 GSC in system.
+* If n = count of primary PU instances, you should have n + 1 GSC in system.
 
-[gigaspaces wiki]:http://wiki.gigaspaces.com/wiki/display/XAP96/Deploying+onto+the+Service+Grid#DeployingontotheServiceGrid-HotDeploy
 [SSH login without password]:http://www.linuxproblem.org/art_9.html
